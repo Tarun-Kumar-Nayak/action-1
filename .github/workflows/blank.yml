@@ -5,6 +5,8 @@ jobs:
   my_firstjob:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4  
     - name: first step
       run: echo "hello world"
     - name : list files
