@@ -31,12 +31,7 @@ jobs:
           cat elephant.txt
           cat tux.txt
 
-      - name: Generate Ghost Art
-        run: |
-          cowsay -f ghostbusters "Tarun Nayak" > ghostbusters.txt
-          cowsay -f ghost "Tarun Nayak" > ghost.txt
-          cat ghostbusters.txt
-          cat ghost.txt
+      
 
       - name: List Available Cowfiles
         run: cowsay -l
