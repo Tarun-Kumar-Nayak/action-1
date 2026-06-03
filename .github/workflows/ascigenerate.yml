@@ -12,7 +12,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Cowsay
-        run: sudo apt-get update && sudo apt-get install -y cowsay
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cowsay
+          echo "/usr/games" >> $GITHUB_PATH
 
       - name: Generate Dragon Art
         run: |
@@ -24,9 +27,9 @@ jobs:
       - name: Generate Elephant Art
         run: |
           cowsay -f elephant "Tarun Nayak" > elephant.txt
-          cowsay -f elephant-in-suit "Tarun Nayak" > elephant-in-suit.txt
+          cowsay -f tux "Tarun Nayak" > tux.txt
           cat elephant.txt
-          cat elephant-in-suit.txt
+          cat tux.txt
 
       - name: Generate Ghost Art
         run: |
@@ -34,6 +37,9 @@ jobs:
           cowsay -f ghost "Tarun Nayak" > ghost.txt
           cat ghostbusters.txt
           cat ghost.txt
+
+      - name: List Available Cowfiles
+        run: cowsay -l
 
       - name: List Files
         run: ls -la
