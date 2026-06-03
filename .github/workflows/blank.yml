@@ -12,5 +12,5 @@ jobs:
     - name: print date
       run: date
     - name: read file
-      run: cat README.MD
+      run: cat README.md
     
