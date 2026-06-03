@@ -1,0 +1,19 @@
+name: multiline commands
+
+on:
+  push:
+
+jobs:
+  multiline_commands:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: multiline-commands in one job
+        run: |
+          echo "tarun doing good"
+          ls -ltra
+          date
+          cat README.md
