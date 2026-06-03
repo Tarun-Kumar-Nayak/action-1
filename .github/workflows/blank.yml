@@ -1,0 +1,16 @@
+name: first action
+on: 
+  push:
+jobs: 
+  my_firstjob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: first step
+      run: echo "hello world"
+    - name : list files
+      run: ls -la
+    - name: print date
+      run: date
+    - name: read file
+      run: cat README.MD
+    
