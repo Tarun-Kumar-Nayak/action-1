@@ -1,0 +1,34 @@
+name: generate asci art
+on:
+    push:
+jobs:
+    generate_asci_art:
+        runs-on: ubuntu-latest
+        steps:
+        - name: ceckout repository
+          uses: actions/checkout@v4
+        - name: install cowsay
+          run: sudo apt-get install cowsay
+
+        - name: generate Gragon art
+          run: |
+            cowsay -f dragon "Tarun Nayak" > dragon.txt
+            catsay -f dragon-and-cow "tarun nayak" > dragon-and-cow.txt
+            cat dragon.txt
+            cat dragon-and-cow.txt
+        - name: generate elephant art
+          run: |
+            cowsay -f elephant "Tarun Nayak" > elephant.txt
+            catsay -f elephant-in-suit "tarun nayak" > elephant-in-suit.txt
+            cat elephant.txt
+            cat elephant-in-suit.txt
+        - name: generate ghost art
+          run: |
+                cowsay -f ghostbusters "Tarun Nayak" > ghostbusters.txt
+                catsay -f ghost "tarun nayak" > ghost.txt
+                cat ghostbusters.txt
+                cat ghost.txt
+        - name: list files
+          run: ls -la
+
+                
