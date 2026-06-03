@@ -1,34 +1,39 @@
-name: generate asci art
+name: Generate ASCII Art
+
 on:
-    push:
+  push:
+
 jobs:
-    generate_asci_art:
-        runs-on: ubuntu-latest
-        steps:
-        - name: ceckout repository
-          uses: actions/checkout@v4
-        - name: install cowsay
-          run: sudo apt-get install cowsay
+  generate_ascii_art:
+    runs-on: ubuntu-latest
 
-        - name: generate Gragon art
-          run: |
-            cowsay -f dragon "Tarun Nayak" > dragon.txt
-            catsay -f dragon-and-cow "tarun nayak" > dragon-and-cow.txt
-            cat dragon.txt
-            cat dragon-and-cow.txt
-        - name: generate elephant art
-          run: |
-            cowsay -f elephant "Tarun Nayak" > elephant.txt
-            catsay -f elephant-in-suit "tarun nayak" > elephant-in-suit.txt
-            cat elephant.txt
-            cat elephant-in-suit.txt
-        - name: generate ghost art
-          run: |
-                cowsay -f ghostbusters "Tarun Nayak" > ghostbusters.txt
-                catsay -f ghost "tarun nayak" > ghost.txt
-                cat ghostbusters.txt
-                cat ghost.txt
-        - name: list files
-          run: ls -la
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-                
+      - name: Install Cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
+
+      - name: Generate Dragon Art
+        run: |
+          cowsay -f dragon "Tarun Nayak" > dragon.txt
+          cowsay -f dragon-and-cow "Tarun Nayak" > dragon-and-cow.txt
+          cat dragon.txt
+          cat dragon-and-cow.txt
+
+      - name: Generate Elephant Art
+        run: |
+          cowsay -f elephant "Tarun Nayak" > elephant.txt
+          cowsay -f elephant-in-suit "Tarun Nayak" > elephant-in-suit.txt
+          cat elephant.txt
+          cat elephant-in-suit.txt
+
+      - name: Generate Ghost Art
+        run: |
+          cowsay -f ghostbusters "Tarun Nayak" > ghostbusters.txt
+          cowsay -f ghost "Tarun Nayak" > ghost.txt
+          cat ghostbusters.txt
+          cat ghost.txt
+
+      - name: List Files
+        run: ls -la
