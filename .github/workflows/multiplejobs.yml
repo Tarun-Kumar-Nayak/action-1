@@ -1,0 +1,40 @@
+name: multiple jobs
+
+on:
+  push:
+
+jobs:
+  build_job_1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Cowsay
+        run: sudo apt-get install -y cowsay
+
+      - name: Execute Cowsay
+        run: cowsay -f dragon "run for cover, i am a dragon...." > dragon.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-file
+          path: dragon.txt
+
+      - name: Sleep for 30 seconds
+        run: sleep 30
+
+  test_job2:
+    needs: build_job_1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dragon-file
+
+      - name: Test File Exists
+        run: grep -i "dragon" dragon.txt
