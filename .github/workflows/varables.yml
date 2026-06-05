@@ -16,8 +16,8 @@ jobs:
     steps:
     - name: print job level variable
       run: |
-        echo "Job level variable: $NAME" 
-        echo "workflow level variable: $COMPANY_NAME"
+        echo "my name is: $NAME" 
+        echo "when company ill join: $COMPANY_NAME"
         echo "my name is $MY_NAME, i am from $CITY"
     - name: Checkout Repository
       uses: actions/checkout@v4
