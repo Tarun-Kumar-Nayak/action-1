@@ -1,4 +1,4 @@
-name: schedule a backup
+name: schedule a backup now
 on:
   schedule:
     - cron: "*/1 * * * *"
