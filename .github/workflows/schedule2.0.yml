@@ -1,0 +1,30 @@
+name: Daily Backup 2.0
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Expiry Date
+        run: |
+          CURRENT_DATE=$(date +%Y%m)
+
+          if [ "$CURRENT_DATE" -gt "202703" ]; then
+            echo "Backup period ended after March 2027"
+            exit 0
+          fi
+
+      - name: Create Backup
+        run: |
+          mkdir backups
+          echo "Backup taken on $(date)" > backups/backup-$(date +%Y%m%d).txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-backup
+          path: backups/
